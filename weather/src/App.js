@@ -1,14 +1,16 @@
 import './App.css';
-import React, { Component}from 'react';
+import React, { Component } from 'react';
 import Weather from './components/Weather'
- export default class App extends Component {
-  render(){
+import Form from './components/Form'
+export default class App extends Component {
+
+  render() {
     return (
       <div className="App">
-        <Weather/>
+        <Form />
       </div>
     );
   }
-  
+
 }
 
