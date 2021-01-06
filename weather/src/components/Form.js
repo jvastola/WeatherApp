@@ -1,6 +1,5 @@
 
 import React from 'react'
-
 const useZipFields = () => {
   const [zipValues, setValue] = React.useState({
     zip1: "",
@@ -21,14 +20,12 @@ const useZipFields = () => {
           const nextSibling = document.querySelector(
             `input[name=zip-${parseInt(fieldIndex, 10) + 1}]`
           );
-
         
           if (nextSibling !== null) {
             nextSibling.focus();
           }
         }
       }
-
       setValue({
         ...value,
         [`zip${fieldIndex}`]: value
@@ -36,12 +33,12 @@ const useZipFields = () => {
     }
   };
 };
-
 const Form = () => {
   const { handleChange } = useZipFields();
 
   return (
-    <>
+      <div>
+    { <>
       <input
         type="text"
         name="zip-1"
@@ -61,8 +58,12 @@ const Form = () => {
         <input
         type="text"
         name="zip-5"
-        onChange={handleChange} />
-    </>
+        onChange={handleChange} 
+        />
+    {console.log(useZipFields)}
+    </>}
+    <button > onSubmit={this.props.getWeather}</button>
+    </div>
   );
 };
 export default Form
