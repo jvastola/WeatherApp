@@ -12,7 +12,7 @@ const useZipFields = () => {
   return {
     handleChange: e => {
       const { value, name } = e.target;
-      const [fieldName, fieldIndex] = name.split("-");
+      const [fieldName, fieldIndex] = name.split("p");
       if (value.length >= 1) {
       
         if (parseInt(fieldIndex, 10) < 5) {
@@ -38,30 +38,43 @@ const Form = (props) => {
 
   return (
       <div>
-        { !this.props.zip1 && (
-          <div onSubmit={this.props.getWeather}>
+        { !props.zip1 && (
+          <div onSubmit={props.getWeather}>
            <input
            type="text"
+           maxLength="1"
+           placeholder="5"
            name="zip1"
            onChange={handleChange} />
          <input
            type="text"
+           maxLength="1"
+           placeholder="5"
            name="zip2"
            onChange={handleChange} />
          <input
            type="text"
+           maxLength="1"
+
+           placeholder="5"
            name="zip3"
            onChange={handleChange} />
            <input
            type="text"
+           maxLength="1"
+
+           placeholder="5"
            name="zip4"
            onChange={handleChange} />
            <input
            type="text"
+           maxLength="1"
+           placeholder="5"
            name="zip5"
            onChange={handleChange} 
            />
           <button style={{display:"none"}}></button>
+          <p>Enter your zipcode</p>
           </div>
           )
         }
