@@ -18,7 +18,7 @@ const useZipFields = () => {
         if (parseInt(fieldIndex, 10) < 5) {
         
           const nextSibling = document.querySelector(
-            `input[name=zip-${parseInt(fieldIndex, 10) + 1}]`
+            `input[name=zip${parseInt(fieldIndex, 10) + 1}]`
           );
         
           if (nextSibling !== null) {
@@ -33,36 +33,38 @@ const useZipFields = () => {
     }
   };
 };
-const Form = () => {
+const Form = (props) => {
   const { handleChange } = useZipFields();
 
   return (
       <div>
-    { <>
-      <input
-        type="text"
-        name="zip-1"
-        onChange={handleChange} />
-      <input
-        type="text"
-        name="zip-2"
-        onChange={handleChange} />
-      <input
-        type="text"
-        name="zip-3"
-        onChange={handleChange} />
-        <input
-        type="text"
-        name="zip-4"
-        onChange={handleChange} />
-        <input
-        type="text"
-        name="zip-5"
-        onChange={handleChange} 
-        />
-    {console.log(useZipFields)}
-    </>}
-    <button > onSubmit={this.props.getWeather}</button>
+        { !this.props.zip1 && (
+          <div onSubmit={this.props.getWeather}>
+           <input
+           type="text"
+           name="zip1"
+           onChange={handleChange} />
+         <input
+           type="text"
+           name="zip2"
+           onChange={handleChange} />
+         <input
+           type="text"
+           name="zip3"
+           onChange={handleChange} />
+           <input
+           type="text"
+           name="zip4"
+           onChange={handleChange} />
+           <input
+           type="text"
+           name="zip5"
+           onChange={handleChange} 
+           />
+          <button style={{display:"none"}}></button>
+          </div>
+          )
+        }
     </div>
   );
 };
