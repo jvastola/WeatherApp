@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import Weather from './components/Weather'
 import Form from './components/Form'
+require('dotenv').config();
 export default class App extends Component {
   state = {
     zip1: undefined,
@@ -9,6 +10,10 @@ export default class App extends Component {
     zip3: undefined,
     zip4: undefined,
     zip5: undefined,
+    day: undefined,
+    date: undefined,
+    //current
+    temperature: undefined,
   }
   getWeather = async e => {
     e.preventDefault();
@@ -17,12 +22,24 @@ export default class App extends Component {
     const zip3 = e.target.elements.zip3.value;
     const zip4 = e.target.elements.zip4.value;
     const zip5 = e.target.elements.zip5.value;
-    const weatherLink = await fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=${zip1}${zip2}${zip3}${zip4}${zip5}&appid=${58469e26060daafd5b059e22faf15f64}&units=imperial`);
-  }
+    const weatherLink = await fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=${zip1}${zip2}${zip3}${zip4}${zip5}&appid=${process.env.REACT_APP_API_KEY}&units=imperial`);
+    const list = await weatherLink.json();
+
 
   if(zip1){
+    this.setState({
+      date: list.list[0].dt_txt,
+      zip1: zip1,
+      //country: country,
+      city: list.city.name,
+      //  current
+      temperature: list.list[0].main.temp,
+
+    });
+  }
 
   }
+
   render() {
     
     return (
@@ -33,7 +50,10 @@ export default class App extends Component {
         zip2={this.zip2}
         zip3={this.zip3}
         zip4={this.zip4}
-        zip5={this.zip5}/>
+        zip5={this.zip5}
+        date={this.state.date}
+        city={this.state.city}
+        temperature={this.state.temperature}/>
       </div>
     );
   }
