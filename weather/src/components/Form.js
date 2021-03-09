@@ -39,14 +39,14 @@ const Form = (props) => {
   return (
     <div>
       { !props.zip1 && (
-        <form onSubmit={props.getWeather}>
-          <input
+        <form className='px-4 py-3 rounded-full ' onSubmit={props.getWeather}>
+          <input className="rounded text-pink-500"
             type="text"
             maxLength="1"
             placeholder="9"
             name="zip1"
             onChange={handleChange} />
-          <input
+          <input 
             type="text"
             maxLength="1"
             placeholder="2"

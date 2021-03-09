@@ -1,4 +1,3 @@
-import './App.css';
 import React, { Component } from 'react';
 import Weather from './components/Weather'
 import Form from './components/Form'
@@ -43,8 +42,10 @@ export default class App extends Component {
   render() {
     
     return (
+      <div className="w-650 h-477 bg-gray-200">
+
       <div className="App">
-         <Form zip1={this.state.zip1} getWeather={this.getWeather} />
+         <Form className='bg-gray-500 shadow-md p-6 ' zip1={this.state.zip1} getWeather={this.getWeather} />
         <Weather  
         zip1={this.state.zip1}
         zip2={this.zip2}
@@ -55,6 +56,7 @@ export default class App extends Component {
         city={this.state.city}
         temperature={this.state.temperature}/>
       </div>
+        </div>
     );
   }
 
