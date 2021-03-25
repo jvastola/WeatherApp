@@ -1,7 +1,32 @@
 import React, { Component } from 'react';
 import Weather from './components/Weather'
 import Form from './components/Form'
+import styled from "styled-components";
+
+const AppWrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-position: center bottom;
+  background-image: url("https://images.unsplash.com/photo-1536514498073-50e69d39c6cf?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2251&q=80");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+`;
+const MainContent = styled.div`
+  width: 650px;
+  height: 477px;
+  background-color: rgba(250, 250, 250, 0.78);
+  box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  margin: auto;
+  display: block;
+  transform: translateY(-50px);
+`;
 require('dotenv').config();
+
+
+
+
 export default class App extends Component {
   state = {
     zip1: undefined,
@@ -41,11 +66,12 @@ export default class App extends Component {
 
   render() {
     
+    
     return (
-      <div className="w-650 h-477 bg-gray-200">
+      <AppWrapper>
 
-      <div className="App">
-         <Form className='bg-gray-500 shadow-md p-6 ' zip1={this.state.zip1} getWeather={this.getWeather} />
+      <MainContent>
+         <Form zip1={this.state.zip1} getWeather={this.getWeather} />
         <Weather  
         zip1={this.state.zip1}
         zip2={this.zip2}
@@ -55,8 +81,9 @@ export default class App extends Component {
         date={this.state.date}
         city={this.state.city}
         temperature={this.state.temperature}/>
-      </div>
-        </div>
+   
+</MainContent>
+</AppWrapper>
     );
   }
 
